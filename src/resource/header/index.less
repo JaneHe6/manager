@@ -1,5 +1,4 @@
 @import './../../style/default.less';
-
 .header{
     background-color: @colorM;
     .header-top{
@@ -12,7 +11,7 @@
             text-align: left;
             font-size: 18px;
             img{
-                height: 40px;
+                height: 60px;
                 vertical-align: middle;
             }
             span{
@@ -21,17 +20,18 @@
         }
         a{
             margin-left: 40px;
+
         }
     }
-    .breadcrumb{
+    .breakcrumb{
         height: 40px;
         line-height: 40px;
         padding: 0 20px;
-        border-top: 1px solid @colorA;
-        .breadcrumb-title{
+        border-top: 1px solid #f9c700;
+        .breakcrumb-title{
             text-align: center;
             font-size: @fontC;
-            &:after{
+            &::after{
                 position: absolute;
                 content: '';
                 left: 73px;
@@ -43,8 +43,19 @@
         }
         .weather{
             text-align: right;
+            font-size: 14px;
             .date{
                 margin-right: 10px;
+                vertical-align: middle;
+            }
+            .weather-img{
+                img{
+                    height: 15px;
+                }
+            }
+            .weather-detail{
+                margin-left: 5px;
+                vertical-align: middle
             }
         }
     }
@@ -54,5 +65,10 @@
     .header-top{
         background: #1890ff;
         color: @colorM;
+    }
+    .ant-form,
+    .ant-col-12,
+    .weather{
+        display: none;
     }
 }

@@ -35,12 +35,41 @@ export default class Order extends React.Component {
             this.setState({
                 // list:list,//当值和value一样时，可以只写一个
                 list,
+                // 让选中状态重置
+                selectedRowKeys:[],
+                selectedRows:null,
                 pagination:Utils.pagination(res,(current)=>{
                     _this.params.page = current;
                     _this.requestList();
                 })
             })
         })
+    }
+
+    onRowClick = (record,index)=>{
+        let selectKey = [index];
+        Modal.info({
+            title:'信息',
+            content:`用户名：${record.user_name}, 用户里程：${record.distance}`
+        })
+        this.setState({
+            selectedRowKeys:selectKey,
+            selectedItem:record
+        })
+    }
+    
+    openOrderDetail = ()=>{
+        let item = this.state.selectedItem;
+        if(!item){
+            Modal.info({
+                title:'信息',
+                content:'请先选择一条订单'
+            })
+            return;
+        }
+        //window.open打开一个新窗口
+        window.open(`/#/common/order/detail/${item.id}`,'_blank')
+        // window.location.href=`/#/common/order/detail/${item.id}`
     }
 
     render() {
@@ -72,7 +101,10 @@ export default class Order extends React.Component {
             },
             {
                 title:'状态',
-                dataIndex:'status'
+                dataIndex:'status',
+                render(status){
+                    return status==1?'进行中':'行程结束'
+                }
             },
             {
                 title:'开始时间',
@@ -91,6 +123,12 @@ export default class Order extends React.Component {
                 dataIndex:'user_pay'
             }
         ]
+    
+    const selectedRowKeys = this.state.selectedRowKeys;
+    const rowSelection={
+        type:'radio',
+        selectedRowKeys
+    }
 
         return (
             <div>
@@ -98,12 +136,20 @@ export default class Order extends React.Component {
                     <FilterForm />
                 </Card>
                 <Card style={{marginTop:10}}>
-                    <Button>订单详情</Button>
-                    <Button>结束订单</Button>
+                    <Button type="primary" onClick={this.openOrderDetail}>订单详情</Button>
+                    <Button type="primary" style={{marginLeft:20}}>结束订单</Button>
                 </Card>
                 <div className="content-wrap">
                     <Table 
                         bordered
+                        rowSelection={rowSelection}
+                        onRow={(record,index)=>{
+                            return{
+                                onClick:()=>{
+                                    this.onRowClick(record,index);
+                                }
+                            };
+                        }}
                         columns={columns}
                         dataSource={this.state.list}
                         pagination={this.state.pagination}

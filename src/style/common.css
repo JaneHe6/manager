@@ -33,6 +33,20 @@
   background: #ffffff;
   opacity: 0.1;
 }
+ul,
+li {
+  list-style-type: none;
+}
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
+body {
+  background: #f1f3f5;
+  font-family: "Helvetica Neue For Number", "PingFang SC Light";
+}
 .container .nav-left {
   color: #fff;
   height: calc(100vh);

@@ -1,6 +1,22 @@
 @import './default.less';
 @import './loading.less';
-
+ul,li{
+    list-style-type: none;
+}
+.clearfix{
+    // 清除浮动，建立了一个空字符串不显示
+    &::after{
+        content:'';
+        clear: both;
+        display: block;
+        visibility: hidden;
+    }
+    
+}
+body{
+    background: @colorL;
+    font-family: "Helvetica Neue For Number","PingFang SC Light"
+}
 .container{ 
     .nav-left{
         color:@colorM;

@@ -21,6 +21,8 @@ import City from './pages/city';
 import Order from './pages/order';
 import NoMatch from './pages/nomatch';
 
+import Common from './common';
+import OrderDetail from './pages/order/detail';
 
 export default class IRouter extends React.Component{
 
@@ -52,7 +54,12 @@ export default class IRouter extends React.Component{
                             </Switch>
                         </Admin>
                     }/>
-                    <Route path="/order/detail" component={Login}/>
+                    {/* 在render后，箭头函数后接大括号需要return，不接大括号不需要return */}
+                    <Route path="/common" render={()=>
+                        <Common>
+                            <Route path="/common/order/detail/:orderId" component={OrderDetail}/>
+                        </Common>
+                    } />
                 </App>
             </HashRouter>
         );
