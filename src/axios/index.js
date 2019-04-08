@@ -1,7 +1,36 @@
 import JsonP from 'jsonp';
 import { Modal } from 'antd';
 import axios from 'axios';
+import Utils from '../utils/utils';
 export default class Axios{
+
+    static requestList(_this,url,params,isMock){
+        var data = {
+            params:params,
+            isMock
+        }
+        // key值和value值相等时，可只写一个
+        this.ajax({
+            url,
+            data
+        }).then((data)=>{
+            if(data && data.result){
+                let list = data.result.item_list.map((item,index)=>{
+                    item.key = index;
+                    return item;
+                });
+                _this.setState({
+                    // list:list,//当值和value一样时，可以只写一个
+                    list,
+                    pagination:Utils.pagination(data,(current)=>{
+                        _this.params.page = current;
+                        _this.requestList();
+                    })
+                })
+            }
+        })
+    }
+
     static jsonp(options){
         return new Promise((resolve,reject) => {
             JsonP(options.url,{
@@ -22,7 +51,12 @@ export default class Axios{
             loading = document.getElementById('ajaxLoading');
             loading.style.display = 'block';
         }
-        let baseApi = 'https://www.easy-mock.com/mock/5c481805d6aa6f7822d035e9/mock.api';
+        let baseApi = '';
+        if(options.isMock){//若为true放置easyMock的接口地址，否则放置服务端的接口地址，此处暂设置为一致
+            baseApi = 'https://www.easy-mock.com/mock/5c481805d6aa6f7822d035e9/mock.api';
+        }else{
+            baseApi = 'https://www.easy-mock.com/mock/5c481805d6aa6f7822d035e9/mock.api';
+        }
         return new Promise((resolve,reject)=>{
             axios({
                 url:options.url,
