@@ -34,10 +34,19 @@ export default {
         })
         return options;
     },
-    updateSelectedItem(selectedRowKeys,selectdItem){
-        this.setState({
-            selectedRowKeys,
-            selectdItem
-        })
+    updateSelectedItem(selectedRowKeys,selectedItem,selectedIds){
+        if(selectedIds){
+            this.setState({
+                selectedRowKeys,
+                selectedItem,
+                selectedIds
+            })
+        }else{
+            this.setState({
+                selectedRowKeys,
+                selectedItem
+            })
+        }
+        
     }
 }

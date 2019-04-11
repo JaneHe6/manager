@@ -54,7 +54,7 @@ class FilterForm extends React.Component{
                             getFieldDecorator([field],{
                                 initialValue:initialValue
                             })(
-                                <Input type="text" placeholder={placeholder} />
+                                <Input type="text" placeholder={placeholder} style={{width:width}} />
                             )
                         }
                     </FormItem>;
@@ -89,6 +89,33 @@ class FilterForm extends React.Component{
                         }
                     </FormItem>;
                     formItemList.push(CHECKBOX);
+                }else if(item.type == 'DATE'){
+                    const begin_time = <FormItem label={label} key={field}>
+                        {
+                            getFieldDecorator('begin_time',{
+                                initialValue:initialValue
+                            })(
+                                <DatePicker showTime={true} placeholder={placeholder} format="YYYY-MM-DD hh:mm:ss" />
+                            )
+                        }
+                    </FormItem>;
+                    formItemList.push(begin_time);
+                }else if(item.type == '城市'){
+                    const city = <FormItem label="城市" key={field}>
+                        {
+                            getFieldDecorator('city',{
+                                initialValue:'0'
+                            })(
+                                <Select 
+                                    placeholder={placeholder}
+                                    style={{width:width}}    
+                                >
+                                    {Utils.getOptionList([{id:'0',name:'全部'},{id:'1',name:'北京'},{id:'2',name:'上海'},{id:'3',name:'广州'}])}
+                                </Select>
+                            )
+                        }
+                    </FormItem>;
+                    formItemList.push(city);
                 }
             })
         }

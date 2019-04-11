@@ -70,3 +70,6 @@ body {
   margin-left: -1px;
   margin-right: -2px;
 }
+.operate-wrap button {
+  margin-right: 10px;
+}

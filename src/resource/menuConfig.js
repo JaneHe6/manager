@@ -75,7 +75,7 @@ const menuList = [
     },
     {
         title:'富文本',
-        key:'/amdin/rich'
+        key:'/admin/rich'
     },
     {
         title:'城市管理',
@@ -104,20 +104,20 @@ const menuList = [
         key:'/admin/bikeMap'
     },
     {
-        title:'图标',
-        key:'/admin/charts',
+        title:'图表',
+        key:'/admin/echarts',
         children:[
             {
                 title:'柱状图',
-                key:'/admin/charts/bar'
+                key:'/admin/echarts/bar'
             },
             {
                 title:'饼图',
-                key:'/admin/charts/pie'
+                key:'/admin/echarts/pie'
             },
             {
                 title:'折线图',
-                key:'/admin/charts/line'
+                key:'/admin/echarts/line'
             }
         ]
     },

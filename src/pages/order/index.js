@@ -95,17 +95,17 @@ export default class Order extends React.Component {
         // })
     }
 
-    onRowClick = (record,index)=>{
-        let selectKey = [index];
-        Modal.info({
-            title:'信息',
-            content:`用户名：${record.user_name}, 用户里程：${record.distance}`
-        })
-        this.setState({
-            selectedRowKeys:selectKey,
-            selectedItem:record
-        })
-    }
+    // onRowClick = (record,index)=>{
+    //     let selectKey = [index];
+    //     Modal.info({
+    //         title:'信息',
+    //         content:`用户名：${record.user_name}, 用户里程：${record.distance}`
+    //     })
+    //     this.setState({
+    //         selectedRowKeys:selectKey,
+    //         selectedItem:record
+    //     })
+    // }
     
     openOrderDetail = ()=>{
         let item = this.state.selectedItem;
@@ -173,12 +173,12 @@ export default class Order extends React.Component {
             }
         ]
     
-    const selectedRowKeys = this.state.selectedRowKeys;
-    // 选中整行
-    const rowSelection={
-        type:'radio',
-        selectedRowKeys
-    }
+    // const selectedRowKeys = this.state.selectedRowKeys;
+    // // // 选中整行
+    // const rowSelection={
+    //     type:'radio',
+    //     selectedRowKeys
+    // }
 
         return (
             <div>
@@ -197,6 +197,9 @@ export default class Order extends React.Component {
                         dataSource={this.state.list}
                         selectedRowKeys={this.state.selectedRowKeys}
                         pagination={this.state.pagination}
+                        selectedIds={this.state.selectedIds}
+                        selectedItem={this.state.selectedItem}
+                        rowSelection='checkbox'
                     />
                     {/* <Table 
                         bordered
