@@ -30,7 +30,6 @@ export default class Header extends React.Component{
         })
     }
 
-
     render(){
         const menuType = this.props.menuType;
         return(
@@ -53,7 +52,7 @@ export default class Header extends React.Component{
                     menuType?'':
                     <Row className="breadcrumb">
                         <Col span="4" className="breadcrumb-title">
-                            首页
+                            {/* 首页 */}
                         </Col>
                         <Col span="20" className="weather">
                             <span className="date">{this.state.sysTime}</span>

@@ -5,7 +5,7 @@ export default class Home extends React.Component{
     render(){
         return(
             <div className="home-wrap">
-                欢迎学习Imooc后台管理系统课程
+                欢迎来到后台管理系统
             </div>
         )
     }

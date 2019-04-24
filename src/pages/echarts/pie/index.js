@@ -14,7 +14,7 @@ import ReactEcharts from 'echarts-for-react';
 export default class Pie extends React.Component{
 
     componentWillMount(){
-        echarts.registerTheme('Imooc',echartTheme);
+        echarts.registerTheme('etStyle',echartTheme);
     }
 
     getOption = ()=>{
@@ -179,13 +179,13 @@ export default class Pie extends React.Component{
         return(
             <div>
                 <Card title="饼图表之一">
-                    <ReactEcharts option={this.getOption()}theme="Imooc" style={{height:500}} />
+                    <ReactEcharts option={this.getOption()}theme="etStyle" style={{height:500}} />
                 </Card>
                 <Card title="饼图表之二" style={{marginTop:10}}>
-                    <ReactEcharts option={this.getOption2()}theme="Imooc" style={{height:500}} />
+                    <ReactEcharts option={this.getOption2()}theme="etStyle" style={{height:500}} />
                 </Card>
                 <Card title="饼图表之三" style={{marginTop:10}}>
-                    <ReactEcharts option={this.getOption3()}theme="Imooc" style={{height:500}} />
+                    <ReactEcharts option={this.getOption3()}theme="etStyle" style={{height:500}} />
                 </Card>
             </div>
         );

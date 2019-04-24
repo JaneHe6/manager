@@ -22,6 +22,7 @@
 }
 .ajax-loading .loading span {
   margin-left: 12px;
+  margin-right: 12px;
 }
 .ajax-loading .overlay {
   position: fixed;
