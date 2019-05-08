@@ -55,7 +55,7 @@ export default class NavLeft extends React.Component {
             <div>
                 <div className="logo">
                     <img src="/assets/logo-ant.png" alt="" />
-                    <h1>Managerment System</h1>
+                    <h1>后台管理系统</h1>
                 </div>
                 <Menu 
                     theme="dark" 
